@@ -1,0 +1,484 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="http://github.com/Wenqer/gulp-base64"
+
+    >gulp-base64 (v0.1.3)</a>
+</h1>
+<h4>gulp task to encode images to data URI</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-base64">module gulp-base64</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">gulp-base64.</span>encode</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">gulp-base64.</span>fetch</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-base64.encode">module gulp-base64.encode</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-base64.encode.getDataURI">
+            function <span class="apidocSignatureSpan">gulp-base64.encode.</span>getDataURI
+            <span class="apidocSignatureSpan">(mimeType, img)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-base64.encode.image">
+            function <span class="apidocSignatureSpan">gulp-base64.encode.</span>image
+            <span class="apidocSignatureSpan">(img, opts, done)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-base64.encode.stylesheet">
+            function <span class="apidocSignatureSpan">gulp-base64.encode.</span>stylesheet
+            <span class="apidocSignatureSpan">(file, opts, done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-base64.fetch">module gulp-base64.fetch</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-base64.fetch.image">
+            function <span class="apidocSignatureSpan">gulp-base64.fetch.</span>image
+            <span class="apidocSignatureSpan">(url, done)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-base64" id="apidoc.module.gulp-base64">module gulp-base64</a></h1>
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-base64.encode" id="apidoc.module.gulp-base64.encode">module gulp-base64.encode</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-base64.encode.getDataURI" id="apidoc.element.gulp-base64.encode.getDataURI">
+        function <span class="apidocSignatureSpan">gulp-base64.encode.</span>getDataURI
+        <span class="apidocSignatureSpan">(mimeType, img)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">getDataURI = function (mimeType, img) {
+  var ret = &#x22;data:&#x22;;
+  ret += mimeType;
+  ret += &#x22;;base64,&#x22;;
+  ret += img.toString(&#x22;base64&#x22;);
+  return ret;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  // External URL?
+} else if(rExternal.test(img)) {
+  // grunt.log.writeln(&#x22;Encoding file: &#x22; + img);
+  fetch.image(img, function(err, src, cacheable) {
+    var encoded, type;
+    if (err == null) {
+      type = mime.lookup(img);
+      encoded = exports.<span class="apidocCodeKeywordSpan">getDataURI</span>(type, src);
+    }
+    complete(err, encoded, cacheable);
+  } );
+
+  // Local file?
+} else {
+  // Does the image actually exist?
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-base64.encode.image" id="apidoc.element.gulp-base64.encode.image">
+        function <span class="apidocSignatureSpan">gulp-base64.encode.</span>image
+        <span class="apidocSignatureSpan">(img, opts, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">image = function (img, opts, done) {
+
+  // Shift args
+  if(typeof opts === &#x22;function&#x22;) {
+    done = opts;
+    opts = {};
+  }
+
+  // Set default, helper-specific options
+  opts = extend({
+    maxImageSize: 32768
+  }, opts);
+
+  var complete = function(err, encoded, cacheable) {
+    // Too long?
+    if(cacheable &#x26;&#x26; encoded &#x26;&#x26; opts.maxImageSize &#x26;&#x26; encoded.length &#x3e; opts.maxImageSize) {
+      err = &#x22;Skipping &#x22; + img + &#x22; (greater than &#x22; + opts.maxImageSize + &#x22; bytes)&#x22;;
+    }
+
+    // Return the original source if an error occurred
+    if(err) {
+      // grunt.log.error(err);
+      done(err, img, false);
+
+      // Otherwise cache the processed image and return it
+    } else {
+      done(null, encoded, cacheable);
+    }
+  };
+
+  // Already base64 encoded?
+  if(rData.test(img)) {
+    complete(null, img, false);
+
+    // External URL?
+  } else if(rExternal.test(img)) {
+    // grunt.log.writeln(&#x22;Encoding file: &#x22; + img);
+    fetch.image(img, function(err, src, cacheable) {
+      var encoded, type;
+      if (err == null) {
+        type = mime.lookup(img);
+        encoded = exports.getDataURI(type, src);
+      }
+      complete(err, encoded, cacheable);
+    } );
+
+    // Local file?
+  } else {
+    // Does the image actually exist?
+    if(!fs.existsSync(img) || !fs.lstatSync(img).isFile()) {
+      // grunt.fail.warn(&#x22;File &#x22; + img + &#x22; does not exist&#x22;);
+      if (opts.debug) {
+        console.warn(&#x22;File &#x22; + img + &#x22; does not exist&#x22;);
+      }
+      complete(true, img, false);
+      return;
+    }
+
+    // grunt.log.writeln(&#x22;Encoding file: &#x22; + img);
+    if (opts.debug) {
+      console.info(&#x22;Encoding file: &#x22; + img);
+    }
+
+    // Read the file in and convert it.
+    var src = fs.readFileSync(img);
+    var type = mime.lookup(img);
+    var encoded = exports.getDataURI(type, src);
+    complete(null, encoded, true);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+          }
+
+          // Test for scheme less URLs =&#x3e; &#x22;//example.com/image.png&#x22;
+          if (!is_local_file &#x26;&#x26; rSchemeless.test(loc)) {
+            loc = &#x27;http:&#x27; + loc;
+          }
+
+          exports.<span class="apidocCodeKeywordSpan">image</span>(loc, opts, function (err, resp, cacheable) {
+            if (err == null) {
+var url = &#x22;url(&#x22; + resp + &#x22;)&#x22;;
+result += url;
+
+if(cacheable !== false) {
+  cache[img] = url;
+}
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-base64.encode.stylesheet" id="apidoc.element.gulp-base64.encode.stylesheet">
+        function <span class="apidocSignatureSpan">gulp-base64.encode.</span>stylesheet
+        <span class="apidocSignatureSpan">(file, opts, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stylesheet = function (file, opts, done) {
+  opts = opts || {};
+
+  // Cache of already converted images
+  var cache = {};
+
+  // Shift args if no options object is specified
+  if(typeof opts === &#x22;function&#x22;) {
+    done = opts;
+    opts = {};
+  }
+
+  var deleteAfterEncoding = opts.deleteAfterEncoding;
+  var src = file.contents.toString();
+  var result = &#x22;&#x22;;
+  var match, img, line, tasks, group;
+
+  async.whilst(function() {
+    group = rImages.exec(src);
+    return group != null;
+  },
+  function(complete) {
+    // if there is another url to be processed, then:
+    //    group[1] will hold everything up to the url declaration
+    //    group[2] will hold the complete url declaration (useful if no encoding will take place)
+    //    group[3] will hold the contents of the url declaration
+    //    group[4] will be undefined
+    // if there is no other url to be processed, then group[1-3] will be undefined
+    //    group[4] will hold the entire string
+
+    // console.log(group[2]);
+
+    if(group[4] == null) {
+      result += group[1];
+
+      var rawUrl = group[3].trim();
+      img = rawUrl
+        .replace(rQuotes, &#x22;&#x22;)
+        .replace(rParams, &#x22;&#x22;); // remove query string/hash parmams in the filename, like foo.png?bar or foo.png#bar
+
+      var test = true;
+      if (opts.extensions) { //test for extensions if it provided
+        var imgExt = img.split(&#x27;.&#x27;).pop();
+        test = opts.extensions.some(function (ext) {
+          return (ext instanceof RegExp) ? ext.test(rawUrl) : (ext === imgExt);
+        });
+      }
+      if (test &#x26;&#x26; opts.exclude) { //test for extensions to exclude if it provided
+        test = !opts.exclude.some(function (pattern) {
+          return (pattern instanceof RegExp) ? pattern.test(rawUrl) : (rawUrl.indexOf(pattern) &#x3e; -1);
+        });
+      }
+      if (!test) {
+        if (opts.debug) {
+          console.log(img + &#x27; skipped by extension or exclude filters&#x27;);
+        }
+        result += group[2];
+        return complete();
+      }
+      // see if this img was already processed before...
+      if(cache[img]) {
+        // grunt.log.error(&#x22;The image &#x22; + img + &#x22; has already been encoded elsewhere in your stylesheet. I&#x27;m going to do it again
+, but it&#x27;s going to make your stylesheet a lot larger than it needs to be.&#x22;);
+        result = result += cache[img];
+        complete();
+      } else {
+        // process it and put it into the cache
+        var loc = img,
+            is_local_file = !rData.test(img) &#x26;&#x26; !rExternal.test(img);
+
+        // Resolve the image path relative to the CSS file
+        if (is_local_file) {
+          // local file system.. fix up the path
+          // loc = path.join(path.dirname(file.path), img);
+
+          loc = opts.baseDir ? path.join(opts.baseDir, img) :
+              path.join(path.dirname(file.path), img);
+
+          // If that didn&#x27;t work, try finding the image relative to
+          // the current file instead.
+          if(!fs.existsSync(loc)) {
+            if (opts.debug) {
+              console.log(&#x27;in &#x27; + loc + &#x27; file doesn\&#x27;t exist&#x27;);
+            }
+            loc = path.join(file.cwd, img);
+          }
+        }
+
+        // Test for scheme less URLs =&#x3e; &#x22;//example.com/image.png&#x22;
+        if (!is_local_file &#x26;&#x26; rSchemeless.test(loc)) {
+          loc = &#x27;http:&#x27; + loc;
+        }
+
+        exports.image(loc, opts, function (err, resp, cacheable) {
+          if (err == null) {
+            var url = &#x22;url(&#x22; + resp + &#x22;)&#x22;;
+            result += url;
+
+            if(cacheable !== false) {
+              cache[img] = url;
+            }
+
+            if(deleteAfterEncoding &#x26;&#x26; is_local_file) {
+              // grunt.log.writeln(&#x22;deleting &#x22; + loc);
+              fs.unlinkSync(loc);
+            }
+          } else {
+            result += group[2];
+          }
+
+          complete();
+        });
+      }
+    } else {
+      result += group[4];
+      complete();
+    }
+  },
+  function() {
+    done(null, result);
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+var encode = require(&#x27;./lib/encode&#x27;);
+
+module.exports = function (opts) {
+
+    function rebase(file, encoding, callback) {
+        var self = this;
+
+        encode.<span class="apidocCodeKeywordSpan">stylesheet</span>(file, opts, function (err, src) {
+if (err) {
+    console.error(err);
+}
+file.contents = new Buffer(src);
+
+self.push(file);
+callback();
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-base64.fetch" id="apidoc.module.gulp-base64.fetch">module gulp-base64.fetch</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-base64.fetch.image" id="apidoc.element.gulp-base64.fetch.image">
+        function <span class="apidocSignatureSpan">gulp-base64.fetch.</span>image
+        <span class="apidocSignatureSpan">(url, done)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">image = function (url, done) {
+    var resultBuffer;
+    var buffList = buffers();
+    var imageStream = new stream.Stream();
+
+    imageStream.writable = true;
+    imageStream.write = function (data) { buffList.push(new Buffer(data)); };
+    imageStream.end = function () { resultBuffer = buffList.toBuffer(); };
+
+    request(url, function (error, response/*, body*/) {
+        if (error) {
+            done(&#x22;Unable to get &#x22; + url + &#x22;. Error: &#x22; + error.message);
+            return;
+        }
+
+        // Bail if we get anything other than 200
+        if (response.statusCode !== 200) {
+            done(&#x22;Unable to get &#x22; + url + &#x22; because the URL did not return an image. Status code &#x22; + response.statusCode + &#x22; received
+&#x22;);
+            return;
+        }
+
+        done(null, resultBuffer, true);
+    }).pipe(imageStream);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+          }
+
+          // Test for scheme less URLs =&#x3e; &#x22;//example.com/image.png&#x22;
+          if (!is_local_file &#x26;&#x26; rSchemeless.test(loc)) {
+            loc = &#x27;http:&#x27; + loc;
+          }
+
+          exports.<span class="apidocCodeKeywordSpan">image</span>(loc, opts, function (err, resp, cacheable) {
+            if (err == null) {
+var url = &#x22;url(&#x22; + resp + &#x22;)&#x22;;
+result += url;
+
+if(cacheable !== false) {
+  cache[img] = url;
+}
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
