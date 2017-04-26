@@ -1,6 +1,6 @@
 # npmdoc-gulp-base64
 
-#### api documentation for  [gulp-base64 (v0.1.3)](http://github.com/Wenqer/gulp-base64)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-base64.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-base64) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-base64.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-base64)
+#### basic api documentation for  [gulp-base64 (v0.1.3)](http://github.com/Wenqer/gulp-base64)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-base64.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-base64) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-base64.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-base64)
 
 #### gulp task to encode images to data URI
 
@@ -65,7 +65,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "version": "0.1.3"
+    "version": "0.1.3",
+    "bin": {}
 }
 ```
 
