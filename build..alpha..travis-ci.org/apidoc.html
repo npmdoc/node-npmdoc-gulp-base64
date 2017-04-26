@@ -72,15 +72,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.gulp-base64.toString">
-            function <span class="apidocSignatureSpan">gulp-base64.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">gulp-base64.</span>encode</span>
 
         </li>
@@ -137,19 +128,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-base64.toString">module gulp-base64.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.gulp-base64.toString.toString">
-            function <span class="apidocSignatureSpan">gulp-base64.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -183,37 +161,6 @@
     return through.obj(rebase);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.gulp-base64.toString" id="apidoc.element.gulp-base64.toString">
-        function <span class="apidocSignatureSpan">gulp-base64.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// Shift args if no options object is specified
-if(typeof opts === &#x22;function&#x22;) {
-  done = opts;
-  opts = {};
-}
-
-var deleteAfterEncoding = opts.deleteAfterEncoding;
-var src = file.contents.<span class="apidocCodeKeywordSpan">toString</span>();
-var result = &#x22;&#x22;;
-var match, img, line, tasks, group;
-
-async.whilst(function() {
-  group = rImages.exec(src);
-  return group != null;
-},
-...</pre></li>
     </ul>
 
 
@@ -563,40 +510,6 @@ result += url;
 if(cacheable !== false) {
   cache[img] = url;
 }
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.gulp-base64.toString" id="apidoc.module.gulp-base64.toString">module gulp-base64.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.gulp-base64.toString.toString" id="apidoc.element.gulp-base64.toString.toString">
-        function <span class="apidocSignatureSpan">gulp-base64.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-// Shift args if no options object is specified
-if(typeof opts === &#x22;function&#x22;) {
-  done = opts;
-  opts = {};
-}
-
-var deleteAfterEncoding = opts.deleteAfterEncoding;
-var src = file.contents.<span class="apidocCodeKeywordSpan">toString</span>();
-var result = &#x22;&#x22;;
-var match, img, line, tasks, group;
-
-async.whilst(function() {
-  group = rImages.exec(src);
-  return group != null;
-},
 ...</pre></li>
     </ul>
 
